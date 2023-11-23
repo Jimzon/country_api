@@ -1,19 +1,19 @@
 "use strict";
 
-const getCountryData = function (country) {
-  const btn = document.querySelector(".btn-country");
-  const countriesContainer = document.querySelector(".countries");
+// const getCountryData = function (country) {
+const btn = document.querySelector(".btn-country");
+const countriesContainer = document.querySelector(".countries");
 
-  const request = new XMLHttpRequest();
-  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
-  // console.log(request.responseText);
+// const request = new XMLHttpRequest();
+// request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+// request.send();
+// console.log(request.responseText);
 
-  request.addEventListener("load", function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
+// request.addEventListener("load", function () {
+//   const [data] = JSON.parse(this.responseText);
+//   console.log(data);
 
-    const html = ` <article class="country">
+const html = ` <article class="country">
 <img class="country__img" src="${data.flags.png}" />
 <div class="country__data">
   <h3 class="country__name">${data.name.common}</h3>
@@ -25,11 +25,22 @@ const getCountryData = function (country) {
   <p class="country__row"><span>💰</span>${data.currencies.PHP}</p>
 </div>
 </article>`;
-    countriesContainer.insertAdjacentHTML("beforeend", html);
-    countriesContainer.style.opacity = 1;
-  });
-};
+countriesContainer.insertAdjacentHTML("beforeend", html);
+countriesContainer.style.opacity = 1;
+// });
+// };
 
-getCountryData("philippines");
-getCountryData("portugal");
-getCountryData("germany");
+// getCountryData("philippines");
+// getCountryData("germany");
+// getCountryData("nicaragua");
+
+// const request = new XMLHttpRequest();
+// request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+// request.send();
+
+const request = fetch("https://restcountries.com/v3.1/name/philippines");
+console.log(request);
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`);
+};
